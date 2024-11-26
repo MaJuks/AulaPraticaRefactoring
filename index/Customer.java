@@ -38,6 +38,7 @@ public class Customer {
         }
         return result;
     }
+    
 
     public int getTotalFrequentRenterPoints() {
         int result = 0;
