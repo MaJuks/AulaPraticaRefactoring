@@ -1,16 +1,16 @@
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
     private String _name;
-    private Vector<Rental> _rentals = new Vector<>();
+    private List<Rental> _rentals = new ArrayList<>();
 
     public Customer(String name) {
         _name = name;
     }
 
     public void addRental(Rental arg) {
-        _rentals.addElement(arg);
+        _rentals.add(arg);
     }
 
     public String getName() {
@@ -25,26 +25,21 @@ public class Customer {
         return new HtmlStatement().value(this);
     }
 
-    public Enumeration<Rental> getRentals() {
-        return _rentals.elements();
+    public List<Rental> getRentals() {
+        return _rentals;
     }
 
     public double getTotalCharge() {
         double result = 0;
-        Enumeration<Rental> rentals = _rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        for (Rental each : _rentals) {
             result += each.getCharge();
         }
         return result;
     }
-    
 
     public int getTotalFrequentRenterPoints() {
         int result = 0;
-        Enumeration<Rental> rentals = _rentals.elements();
-        while (rentals.hasMoreElements()) {
-            Rental each = rentals.nextElement();
+        for (Rental each : _rentals) {
             result += each.getFrequentRenterPoints();
         }
         return result;
